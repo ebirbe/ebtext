@@ -7,7 +7,7 @@
  * @author	Erick Birbe <erickcion@gmail.com>
  * @date	2015-09-03
  */
-require_once("ebtconfig.php");
+require_once('ebtconfig.php');
 
 class EBTGlobal
 {
