@@ -1,15 +1,15 @@
 <?php
 /**
- * EBTCreator
+ * EBTWriter
  *
- * Create files to interact with SMS Server Tool v3.
+ * Creates files to interact with SMS Server Tool v3.
  *
  * @author	Erick Birbe <erickcion@gmail.com>
  * @date	2015-09-03
  */
 require_once('ebtglobal.php');
 
-class EBTCreator extends EBTGlobal
+class EBTWriter extends EBTGlobal
 {
 	var $sender;
 	var $message;
@@ -41,14 +41,4 @@ class EBTCreator extends EBTGlobal
 		}
 		return fwrite($hFile, $this->get_content());
 	}
-}
-
-// ---------------------------------------------------------------------
-// MAIN
-// ---------------------------------------------------------------------
-if (!debug_backtrace())
-{
-	$sc = new EBTCreator("04128663381", "Hola, españa.");
-	echo $sc->get_content();
-	$sc->write();
 }
