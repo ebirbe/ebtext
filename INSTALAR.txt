@@ -1,0 +1,18 @@
+* Instalar el servidor de SMS
+
+	aptitude install smstools
+
+* Configurar dispositivo y opciones del servidor sms
+
+	vim.tiny /etc/smsd.conf
+
+** Configurar ruta del dispositivo GSM
+
+	device = /dev/ttyUSB0
+
+** Configurar otras opciones
+
+	incoming_utf8 = yes
+	decode_unicode_text = yes
+	date_filename = 1
+
