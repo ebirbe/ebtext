@@ -19,14 +19,14 @@ function run($event, $file, $id = NULL)
 			$sMsgIn = trim($oMessage->get_message());
 			$sMsgOut = "";
 			
-			if (strpos(strtoupper($sMsgIn), 'EJECUTA') === FALSE)
+			if (strpos(strtoupper($sMsgIn), 'ATENCION') === FALSE)
 			{
 				$sMsgOut = "No entiendo lo que me dices, deberias buscar un manual o llamar a alguien que te asesore de como usarme, mientras tanto me la echaré de flojo porque no me has mandado a hacer nada... :-P";
 			}
 			else
 			{
-				$sComando = trim(str_ireplace('EJECUTA', '', $sMsgIn));
-				$sMsgOut = "Uff, al fin algo qué hacer!!... ejecutaré lo que me pediste (" . $sComando . ")";
+				$sComando = trim(str_ireplace('ATENCION', '', $sMsgIn));
+				$sMsgOut = "Qué bueno! Algo que entiendo!... Me dijiste: '" . $sComando . "'. Bueno, pero ya... no te emociones mucho xq esto es lo unico que hago por ahora.";
 			}
 
 			$oResponse = new EBTMessage();
