@@ -11,34 +11,42 @@ require_once('ebtglobal.php');
 
 class EBTWriter extends EBTGlobal
 {
-	var $sender;
-	var $message;
+	private $_headers;
+	private $_message;
+	private $_content;
 
-	function __construct($sndr, $msg = "")
+	function __construct($headers, $msg = "")
 	{
 		parent::__construct();
-		$this->sender = $sndr;
-		$this->message = $msg;
+		$this->_headers = $headers;
+		$this->_message = $msg;
+		$this->_set_content();
+		return $this;
+	}
+
+	protected function _set_content()
+	{
+		$this->_content = "";
+		foreach ($this->_headers as $key => $value)
+		{
+			$this->_content .= $key . ": " . $value . "\n";
+		}
+		$this->_content .= "\n" . $this->_message;
 	}
 
 	function get_content()
 	{
-		$data = "To: " . $this->sender . "\n";
-		$data .= "\n";
-		$data .= $this->message;
-		return $data;
+		return $this->_content;
 	}
 
 	function write()
 	{
 		$fname = date('YmdHis');
-		
 		$hFile = fopen($this->config->outgoing . '/' . $fname . $this->config->sms_ext, 'w');
-		
-		if (!$hFile)
+		if ($hFile)
 		{
-			return FALSE;
+			fwrite($hFile, $this->_content);
 		}
-		return fwrite($hFile, $this->get_content());
+		return $this;
 	}
 }
