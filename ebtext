@@ -1,0 +1,53 @@
+#!/usr/bin/php -q
+<?php
+/**
+ * EBText is a tool for sending and receiving SMS trough SMS Server
+ * Tools v3
+ * 
+ * @author	Erick Birbe <erickcion@gmail.com>
+ * @date	2015-09-04
+ * */
+require_once('ebtmessage.php');
+
+function run($event, $file, $id = NULL)
+{
+	switch($event)
+	{
+		case 'RECEIVED':
+			
+			break;
+
+		case 'SENT':
+			break;
+
+		case 'FAILED':
+			break;
+
+		case 'REPORT':
+			break;
+
+		case 'CALL':
+			break;
+
+		default:
+			break;
+	}
+}
+
+/* ********************************************************************
+ * MAIN
+ * ********************************************************************/
+
+// Verify the arguments before continue
+if (!isset($argv) or count($argv) < 3)
+{
+	echo "Nothing to do here... I quit!\n";
+	return 1;
+}
+
+$script_file = $argv[0];
+$sms_event = $argv[1];
+$sms_filename = $argv[2];
+$sms_id = isset($argv[3]) ? $argv[3] : NULL;
+
+run($sms_event, $sms_filename, $sms_id);
