@@ -12,9 +12,10 @@ require_once('ebtconfig.php');
 class EBTGlobal
 {
 	var $config;
-	
+
 	function __construct()
 	{
 		$this->config = new EBTConfig();
+		return $this;
 	}
 }
