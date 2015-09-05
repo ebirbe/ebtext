@@ -14,7 +14,25 @@ function run($event, $file, $id = NULL)
 	switch($event)
 	{
 		case 'RECEIVED':
+			$oMessage = new EBTMessage($file, EBTMSG_FILE);
+			$sClientNumber = $oMessage->get_header('From');
+			$sMsgIn = trim($oMessage->get_message());
+			$sMsgOut = "";
 			
+			if (strpos(strtoupper($sMsgIn), 'EJECUTA') === FALSE)
+			{
+				$sMsgOut = "No entiendo lo que me dices, deberias buscar un manual o llamar a alguien que te asesore de como usarme, mientras tanto me la echaré de flojo porque no me has mandado a hacer nada... :-P";
+			}
+			else
+			{
+				$sComando = trim(str_ireplace('EJECUTA', '', $sMsgIn));
+				$sMsgOut = "Uff, al fin algo qué hacer!!... ejecutaré lo que me pediste (" . $sComando . ")";
+			}
+
+			$oResponse = new EBTMessage();
+			$oResponse->set_header('To', $sClientNumber);
+			$oResponse->set_message($sMsgOut);
+			$oResponse->write();
 			break;
 
 		case 'SENT':

@@ -1,0 +1,13 @@
+From: 04128663381
+From_TOA: 81 unknown, ISDN/telephone
+From_SMSC: 584260001100
+Sent: 15-09-03 21:14:57
+Received: 15-09-03 21:15:18
+Subject: GSM1
+Modem: GSM1
+IMSI: 734061042765822
+Report: no
+Alphabet: UTF-8
+Length: 114
+
+ejecuta ps -A
