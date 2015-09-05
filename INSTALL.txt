@@ -16,3 +16,10 @@
 	decode_unicode_text = yes
 	date_filename = 1
 
+*** Para Modems Huawei Activar lectura desde SIM
+	[GSM1]
+	init = ATE0+CMEE=1;+CREG=2;+CPMS="MT","MT","MT"
+	# Inicia la busqueda desde mensajes desde el indice 0
+	check_memory_method =2
+	# Alta prioridad a mensajes entrantes
+	incoming = high
