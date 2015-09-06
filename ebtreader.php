@@ -21,15 +21,18 @@ class EBTReader extends EBTGlobal
 
 	function read()
 	{
-		$hFile = fopen($this->filename, 'r');
-		$iSize = filesize($this->filename);
-		if (!$hFile)
+		if (is_file($this->filename) and is_readable($this->filename))
 		{
-			return FALSE;
-		}
-		if ($sContent = fread($hFile, $iSize))
-		{
-			return $sContent;
+			$hFile = fopen($this->filename, 'r');
+			$iSize = filesize($this->filename);
+			if (!$hFile)
+			{
+				return FALSE;
+			}
+			if ($sContent = fread($hFile, $iSize))
+			{
+				return $sContent;
+			}
 		}
 		return FALSE;
 	}
