@@ -10,8 +10,10 @@
 
 class EBTConfig
 {
-	var $outgoing = "/home/erick/Codigos/ebtext/spool/outgoing";
-	var $incoming = "/home/erick/Codigos/ebtext/spool/incoming";
-	var $checked = "/home/erick/Codigos/ebtext/spool/checked";
+	var $outgoing = "/var/spool/sms/outgoing";
+	var $incoming = "/var/spool/sms/incoming";
+	var $checked = "/var/spool/sms/checked";
+	var $sent = "/var/spool/sms/sent";
+	var $failed = "/var/spool/sms/failed";
 	var $sms_ext = ".txt";
 }
