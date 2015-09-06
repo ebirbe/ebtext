@@ -1,7 +1,7 @@
 #!/usr/bin/php -q
 <?php
 /**
- * EBTBulk is a tool for sending one message to several receivers.
+ * EBTBulk is a script for sending one message to several receivers.
  * 
  * @author	Erick Birbe <erickcion@gmail.com>
  * @date	2015-09-06
