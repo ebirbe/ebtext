@@ -7,32 +7,37 @@
  * @author	Erick Birbe <erickcion@gmail.com>
  * @date	2015-09-04
  * */
+
+/* *********************************************************************
+ * VALIDATIONS... neccessary to run well
+ * ********************************************************************/
+
+// Verify the arguments before continue
+if (!isset($argv) or count($argv) < 3)
+{
+	echo "Nothing to do here... I quit!\n";
+	return 1;
+}
+
+// Set the current directory correctly for CLI requests
+if (defined('STDIN'))
+{
+	chdir(dirname(__FILE__));
+}
+
+/* ********************************************************************
+ * MAIN PROCESS
+ * ********************************************************************/
 require_once('ebtmessage.php');
+require_once('eventhandler/ebtmsgreceived.php');
 
 function run($event, $file, $id = NULL)
 {
 	switch($event)
 	{
 		case 'RECEIVED':
-			$oMessage = new EBTMessage($file, EBTMSG_FILE);
-			$sClientNumber = $oMessage->get_header('From');
-			$sMsgIn = trim($oMessage->get_message());
-			$sMsgOut = "";
-			
-			if (strpos(strtoupper($sMsgIn), 'ATENCION') === FALSE)
-			{
-				$sMsgOut = "No entiendo lo que me dices, deberias buscar un manual o llamar a alguien que te asesore de como usarme, mientras tanto me la echaré de flojo porque no me has mandado a hacer nada... :-P";
-			}
-			else
-			{
-				$sComando = trim(str_ireplace('ATENCION', '', $sMsgIn));
-				$sMsgOut = "Qué bueno! Algo que entiendo!... Me dijiste: '" . $sComando . "'. Bueno, pero ya... no te emociones mucho xq esto es lo unico que hago por ahora.";
-			}
-
-			$oResponse = new EBTMessage();
-			$oResponse->set_header('To', $sClientNumber);
-			$oResponse->set_message($sMsgOut);
-			$oResponse->write();
+			$oMgsRcvd = new EBTMsgReceived($file);
+			$oMgsRcvd->execute();
 			break;
 
 		case 'SENT':
@@ -52,20 +57,9 @@ function run($event, $file, $id = NULL)
 	}
 }
 
-/* ********************************************************************
- * MAIN
- * ********************************************************************/
-
-// Verify the arguments before continue
-if (!isset($argv) or count($argv) < 3)
-{
-	echo "Nothing to do here... I quit!\n";
-	return 1;
-}
-
-$script_file = $argv[0];
 $sms_event = $argv[1];
 $sms_filename = $argv[2];
 $sms_id = isset($argv[3]) ? $argv[3] : NULL;
 
+// Start the applicantion
 run($sms_event, $sms_filename, $sms_id);
