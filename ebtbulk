@@ -1,0 +1,62 @@
+#!/usr/bin/php -q
+<?php
+/**
+ * EBTBulk is a tool for sending one message to several receivers.
+ * 
+ * @author	Erick Birbe <erickcion@gmail.com>
+ * @date	2015-09-06
+ * */
+
+/* *********************************************************************
+ * VALIDATIONS... neccessary to run well
+ * ********************************************************************/
+
+// Verify the arguments before continue
+if (!isset($argv) or count($argv) < 3)
+{
+	echo "Nothing to do here... I quit!\n";
+	return 1;
+}
+
+// Set the current directory correctly for CLI requests
+if (defined('STDIN'))
+{
+	chdir(dirname(__FILE__));
+}
+
+/* ********************************************************************
+ * MAIN PROCESS
+ * ********************************************************************/
+require_once('ebtmessage.php');
+
+function _send_message($to, $message)
+{
+	echo "Creating SMS to " . $to . "... ";
+	$oMessage = new EBTMessage();
+	$oMessage->set_header('To', $to)
+		->set_message($message)
+		->write();
+	echo "Created!\n";
+	unset($oMessage);
+}
+
+function run(array $receivers, $message)
+{
+	// Clean duplicated phone numbers
+	$receivers = array_unique($receivers);
+
+	// Send multiple messages
+	foreach ($receivers as $sRcv)
+	{
+		_send_message($sRcv, $message);
+	}
+}
+
+// Extract the receivers
+$aReceivers = array_slice($argv, 1, -1);
+// Get the message
+$iLastIndex = count($argv) - 1;
+$sMessage = $argv[$iLastIndex];
+
+// Start the applicantion
+run($aReceivers, $sMessage);
