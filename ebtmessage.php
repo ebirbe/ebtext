@@ -127,6 +127,7 @@ class EBTMessage extends EBTGlobal
 	{
 		$oWriter = new EBTWriter($this->_headers, $this->_message);
 		$oWriter->write();
+		return $this;
 	}
 }
 
