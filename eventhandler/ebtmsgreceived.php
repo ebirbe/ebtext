@@ -18,12 +18,12 @@ class EBTMsgReceived extends EBTMessage
 		
 		if (strpos(strtoupper($sMsgIn), 'ATENCION') === FALSE)
 		{
-			$sMsgOut = "No entiendo lo que me dices, deberias buscar un manual o llamar a alguien que te asesore de como usarme, mientras tanto me la echaré de flojo porque no me has mandado a hacer nada... :-P";
+			$sMsgOut = "Lo siento, este telefono esta siendo usado, abusado y exploado para mandar SMS automaticos. Un dato innecesario: son las " . date('h:i:s A');
 		}
 		else
 		{
 			$sComando = trim(str_ireplace('ATENCION', '', $sMsgIn));
-			$sMsgOut = "Qué bueno! Algo que entiendo!... Me dijiste: '" . $sComando . "'. Bueno, pero ya... no te emociones mucho xq esto es lo unico que hago por ahora.";
+			$sMsgOut = "Qué bueno! Algo que entiendo!... Me dijiste: '" . $sComando . "'. Pero igual no hago nada con eso.";
 		}
 
 		// Send the automatic response
