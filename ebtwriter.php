@@ -41,7 +41,8 @@ class EBTWriter extends EBTGlobal
 
 	function write()
 	{
-		$fname = date('YmdHis');
+		$sRndCode = substr(str_shuffle(MD5(microtime())), 0, 6);
+		$fname = date('YmdHis') . '.' . $sRndCode;
 		$hFile = fopen($this->config->outgoing . '/' . $fname . $this->config->sms_ext, 'w');
 		if ($hFile)
 		{
