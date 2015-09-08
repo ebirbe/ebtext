@@ -42,11 +42,14 @@ class EBTWriter extends EBTGlobal
 	function write()
 	{
 		$sRndCode = substr(str_shuffle(MD5(microtime())), 0, 6);
-		$fname = date('YmdHis') . '.' . $sRndCode;
-		$hFile = fopen($this->config->outgoing . '/' . $fname . $this->config->sms_ext, 'w');
+		$fname = $this->config->outgoing . '/' . date('YmdHis') . '.' . $sRndCode . $this->config->sms_ext;
+		$hFile = fopen($fname, 'w');
 		if ($hFile)
 		{
-			fwrite($hFile, $this->_content);
+			if ( ! fwrite($hFile, $this->_content))
+			{
+				throw new Exeption("Unable to write SMS to file " . $fname);
+			}
 		}
 		return $this;
 	}

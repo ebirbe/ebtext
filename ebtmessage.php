@@ -126,10 +126,7 @@ class EBTMessage extends EBTGlobal
 	function write($filename = NULL)
 	{
 		$oWriter = new EBTWriter($this->_headers, $this->_message);
-		if ($oWriter->write())
-		{
-			throw new Exception('Unable to write file ' . $filename);
-		}
+		$oWriter->write();
 		return $this;
 	}
 }
