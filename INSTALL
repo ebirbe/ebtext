@@ -13,6 +13,7 @@
 	
 ** Configurar opciones Generales
 
+	loglevel = 5
 	incoming_utf8 = yes
 	decode_unicode_text = yes
 	date_filename = 1
@@ -36,7 +37,12 @@
 	check_memory_method = 2
 	# Otros
 	baudrate = 115200
-	
+
+* Activar lista negra de numeros no deseados
+
+	mkdir /etc/smstools
+	cp -vf examples/blacklist /etc/smstools/
+
 * Levantar el servicio
 
 	sudo service smstools restart
