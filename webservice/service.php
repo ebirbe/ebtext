@@ -36,25 +36,17 @@ function run(array $receivers, $message)
 	}
 }
 
-// json
+// Process the JSON
 $sJson = file_get_contents('php://input');
 $oParams = json_decode($sJson);
-// json
 
 if(!$oParams)
 {
-	return 1;
+	exit(1);
 }
 
-//TODO Extract the receivers
-foreach($oParams->to as $sNumber)
-{
-	echo $sNumber;
-}
-
-$aReceivers = array($obj->to);
-// Get the message
-$sMessage = $obj->msg;
+$aReceivers = $oParams->to;
+$sMessage = $oParams->msg;
 
 // Start the applicantion
 run($aReceivers, $sMessage);

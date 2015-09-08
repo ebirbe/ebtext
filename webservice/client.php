@@ -1,10 +1,12 @@
 <?php
 
-$ebt_service = 'http://localhost/~erick/ebtservice/ebthttp.php';
+$ebt_service = 'http://localhost/~erick/ebtservice/service.php';
 
 $param = array(
-	"to" => '04128663381',
-	"msg" => "Hola mundo",
+	"to" => array(
+		'04128663381',
+	),
+	"msg" => "Hola mundo.\n\n" . date('Y-m-d H:i:s A'),
 );
 
 $data_string = json_encode($param);

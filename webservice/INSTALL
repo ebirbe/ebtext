@@ -1,0 +1,3 @@
+* Instalar soporte a CURL
+
+	aptitude install php5-curl
