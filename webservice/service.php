@@ -3,18 +3,15 @@
  * EBTBulk is a script for sending one message to several receivers.
  * 
  * @author	Erick Birbe <erickcion@gmail.com>
- * @date	2015-09-06
+ * @date	2015-09-08
  * */
 
-/* *********************************************************************
- * VALIDATIONS... neccessary to run well
- * ********************************************************************/
-
+define('EBTPATH', '/opt/ebtext/');
 
 /* ********************************************************************
  * MAIN PROCESS
  * ********************************************************************/
-require_once('ebtmessage.php');
+require_once EBTPATH.'ebtmessage.php';
 
 function _send_message($to, $message)
 {
@@ -39,16 +36,21 @@ function run(array $receivers, $message)
 	}
 }
 
+// json
+$sJson = file_get_contents('php://input');
+$oParams = json_decode($sJson);
+// json
 
+if(!$oParams)
+{
+	return 1;
+}
 
-///json
-$json = file_get_contents('php://input');
-$obj = json_decode($json);
-///json
-
-
-// Extract the receivers
-
+//TODO Extract the receivers
+foreach($oParams->to as $sNumber)
+{
+	echo $sNumber;
+}
 
 $aReceivers = array($obj->to);
 // Get the message
