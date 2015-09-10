@@ -1,6 +1,6 @@
 * Instalar el servidor de SMS
 
-	aptitude install smstools php5-cli
+	aptitude install usb-modeswitch modemmanager smstools php5-cli
 	
 * Instalar ebtext
 
