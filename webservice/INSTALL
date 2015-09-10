@@ -1,3 +1,7 @@
 * Instalar soporte a CURL
 
-	aptitude install php5-curl
+	sudo aptitude install php5-curl
+
+* Agregar usuario al grupo smsd
+
+	sudo adduser www-data smsd
