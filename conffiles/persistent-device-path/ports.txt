@@ -1,0 +1,12 @@
+total 0
+lrwxrwxrwx 1 root root 10 sep 10 23:36 2-1:1.0 -> ../ttyUSB0
+lrwxrwxrwx 1 root root 11 sep 10 23:36 2-1:1.3 -> ../ttyUSB27
+lrwxrwxrwx 1 root root 11 sep 10 23:36 2-1:1.4 -> ../ttyUSB28
+total 0
+lrwxrwxrwx 1 root root 10 sep 10 23:45 2-2:1.0 -> ../ttyUSB0
+lrwxrwxrwx 1 root root 11 sep 10 23:45 2-2:1.3 -> ../ttyUSB29
+lrwxrwxrwx 1 root root 11 sep 10 23:45 2-2:1.4 -> ../ttyUSB30
+total 0
+lrwxrwxrwx 1 root root 10 sep 10 23:46 2-4:1.0 -> ../ttyUSB0
+lrwxrwxrwx 1 root root 11 sep 10 23:46 2-4:1.3 -> ../ttyUSB31
+lrwxrwxrwx 1 root root 11 sep 10 23:46 2-4:1.4 -> ../ttyUSB32
