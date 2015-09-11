@@ -1,0 +1,2004 @@
+<!DOCTYPE html>
+<html itemscope="" itemtype="http://schema.org/QAPage"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<title>linux - How to identify multiple USB-serial adapters under Ubuntu 10.1 - Stack Overflow</title>
+    <link rel="shortcut icon" href="http://cdn.sstatic.net/stackoverflow/img/favicon.ico?v=6cd6089ee7f6">
+    <link rel="apple-touch-icon image_src" href="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=41f6e13ade69">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="http://stackoverflow.com/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com">
+    <meta property="og:type" content="website">
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=ea71a5211a91&amp;a">
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="How to identify multiple USB-serial adapters under Ubuntu 10.1">
+    <meta name="twitter:description" property="og:description" itemprop="description" content="I am reading data from multiple identical USB-serial adapters under Ubuntu 10.1.
+
+On occasion, their /dev/tty path changes (eg if other USB devices are connected on startup).
+
+I need a way of repea...">
+    <meta property="og:url" content="http://stackoverflow.com/questions/4800099/how-to-identify-multiple-usb-serial-adapters-under-ubuntu-10-1">
+    <link rel="canonical" href="http://stackoverflow.com/questions/4800099/how-to-identify-multiple-usb-serial-adapters-under-ubuntu-10-1">
+
+    
+    
+    <script src="how_to_identify_multiple_usb_serial_adapter_files/ados.js" async="" type="text/javascript"></script><script src="how_to_identify_multiple_usb_serial_adapter_files/quant.js" async=""></script><script src="how_to_identify_multiple_usb_serial_adapter_files/beacon.js" async=""></script><script src="how_to_identify_multiple_usb_serial_adapter_files/analytics.js" async=""></script><script src="how_to_identify_multiple_usb_serial_adapter_files/ados_002.js" async="" type="text/javascript"></script><script src="how_to_identify_multiple_usb_serial_adapter_files/jquery.js"></script>
+    <script src="how_to_identify_multiple_usb_serial_adapter_files/stub.js"></script>
+    <link rel="stylesheet" type="text/css" href="how_to_identify_multiple_usb_serial_adapter_files/all.css">
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question 'How to identify multiple USB-serial adapters under Ubuntu 10.1'" href="http://stackoverflow.com/feeds/question/4800099">
+            <meta name="twitter:app:country" content="US">
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:iphone" content="871299723">
+            <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/4800099/how-to-identify-multiple-usb-serial-adapters-under-ubuntu-10-1">
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:ipad" content="871299723">
+            <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/4800099/how-to-identify-multiple-usb-serial-adapters-under-ubuntu-10-1">
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/4800099/how-to-identify-multiple-usb-serial-adapters-under-ubuntu-10-1">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+                    
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:1,shownCommentCount:1,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:4800099});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('1', '4800099');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text'); });
+
+            });
+        </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1441947116,"networkMetaHostname":"meta.stackexchange.com","routeName":"Questions/Show","styleCode":true,"enableUserHovercards":true,"snippets":{"enabled":true,"domain":"stacksnippets.net"},"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"globalAuthDisabled":true,"nonAsciiTags":true,"enableSocialMediaInSharePopup":true},"timingsGuid":"960b8b4a-e7eb-414c-8fbe-90f807591bbd","timingsInfo":"FrGH/2+xRbTWnc3Ijrwxw/WATaAvcv1iatGVk8EPvgFNxgMDGCVj8A9ujY6tXI4cmKCdxz/MLn/UkaCr3BiVIsZote1DZn4Cegtm+/h63L65pTQERKfiGYpRldUYrZV1i7QrG2DpMG4gY6CsO8t0mlz3s2v39Gqao0u1J21kRq3oDYosVkciSLC5msRHLAyDwPfNd1oFzKaWjy6Zpmt4MTLp0hlxi6P7eg8OjOfsAMlbQqsAqiix64mA013WLD7hfKfz3aj3fVkP1hlIGOR8SzRuV/j3S7BgvIG6j0KBMkmFyj6223VwjFKPGyEP80Pp9paL5EYJ7QlOhg0tWImUudF4FfHQMmTrp9ItxOpsH5U=","user":{"fkey":"29089ab594852640f10f61a1c1077b32","isAnonymous":true,"ab":{"topbar_next_achievement":{"v":"a","g":2},"anon_popups":{"v":"a","g":1}}}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"531607529e19","js/moderator.en.js":"c10ac45de559","js/full-anon.en.js":"4082c4669b93","js/full.en.js":"6b0cf58556b5","js/wmd.en.js":"bf775e6d3113","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"6aa70862e9c3","js/help.en.js":"1b032ba0392d","js/tageditor.en.js":"c84618a71b61","js/tageditornew.en.js":"6a30dffaab14","js/inline-tag-editing.en.js":"de80429b1816","js/revisions.en.js":"9e897f24d78d","js/review.en.js":"b3f0d5e85a05","js/tagsuggestions.en.js":"d1ff9b84abe5","js/post-validation.en.js":"7c48822b4f66","js/explore-qlist.en.js":"cd6e5274146c","js/events.en.js":"d1a0a39018e0","js/keyboard-shortcuts.en.js":"2e257ad32c58","js/external-editor.en.js":"d950ed54074b","js/external-editor.en.js":"d950ed54074b","js/snippet-javascript.en.js":"de8a8912991d","js/snippet-javascript-codemirror.en.js":"00ccf782a961"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    
+    
+<script src="how_to_identify_multiple_usb_serial_adapter_files/full-anon.js" async=""></script><script src="how_to_identify_multiple_usb_serial_adapter_files/snippet-javascript.js" async=""></script><script src="how_to_identify_multiple_usb_serial_adapter_files/post-validation.js" async=""></script><script src="how_to_identify_multiple_usb_serial_adapter_files/external-editor.js" async=""></script><script src="how_to_identify_multiple_usb_serial_adapter_files/adFeedback.js" type="text/javascript"></script><link href="how_to_identify_multiple_usb_serial_adapter_files/adFeedback.css" rel="stylesheet"></head>
+<body class="question-page new-topbar">
+    <noscript><div id="noscript-padding"></div></noscript>
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="http://stackoverflow.com/">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+            <a href="http://chat.stackoverflow.com/" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:6 })">chat</a>
+                    <a href="http://blog.stackoverflow.com/" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:7 })">blog</a>
+            </div>
+
+
+
+
+    <a href="http://stackoverflow.com/" class="current-site-link site-link js-gps-track" data-id="1" data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.stackoverflow.com/" class="site-link js-gps-track" data-id="552" data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                </li>
+                            <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    <a class="site-link js-gps-track" href="http://careers.stackoverflow.com/?utm_source=stackoverflow.com&amp;utm_medium=site-ui&amp;utm_campaign=multicollider" data-gps-track="site_switcher.click({ item_type:9 })">
+                        <div class="site-icon favicon favicon-careers" title="Stack Overflow Careers"></div>
+                        Stack Overflow Careers
+                    </a>
+                </li>
+        </ul>
+    </div>
+    
+    <div class="header" id="your-communities-header">
+        <h3>
+your communities        </h3>
+            
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f4800099%2fhow-to-identify-multiple-usb-serial-adapters-under-ubuntu-10-1" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:10 })">Sign up</a> or <a href="https://stackoverflow.com/users/login?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f4800099%2fhow-to-identify-multiple-usb-serial-adapters-under-ubuntu-10-1" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:11 })">log in</a> to customize your list.
+            </div>
+    </div>
+    
+    <div class="header">
+        <h3><a href="http://stackexchange.com/sites">more stack exchange communities</a></h3>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+
+            <a href="http://stackexchange.com/" class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track" data-gps-track="site_switcher.show" title="A list of all 150 Stack Exchange sites">
+                <span class="hidden-text">Stack Exchange</span>
+            </a>
+
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                <span class="topbar-menu-links">
+                                <a href="https://stackoverflow.com/users/signup?ssrc=head&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f4800099%2fhow-to-identify-multiple-usb-serial-adapters-under-ubuntu-10-1" class="login-link">sign up</a>
+                                <a href="https://stackoverflow.com/users/login?ssrc=head&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f4800099%2fhow-to-identify-multiple-usb-serial-adapters-under-ubuntu-10-1" class="login-link">log in</a>
+
+                        <a href="http://stackoverflow.com/tour">tour</a>
+                            <a href="#" class="icon-help js-help-button" title="Help Center and other resources">
+        help
+        <span class="triangle"></span>
+    </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="http://stackoverflow.com/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="http://stackoverflow.com/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                    <li>
+                        <a href="http://meta.stackoverflow.com/" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                            Meta
+                            <span class="item-summary">
+                                Discuss the workings and policies of this site
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+                            <a href="http://careers.stackoverflow.com/?utm_source=stackoverflow.com&amp;utm_medium=site-ui&amp;utm_campaign=anon-topbar">stack overflow careers</a>
+                    </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="/search" method="get" autocomplete="off">
+                    <input name="q" placeholder="search" tabindex="1" autocomplete="off" maxlength="240" type="text">
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="http://stackoverflow.com/">
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="http://stackoverflow.com/questions">Questions</a></li>
+                        <li><a id="nav-tags" href="http://stackoverflow.com/tags">Tags</a></li>
+                        <li><a id="nav-users" href="http://stackoverflow.com/users">Users</a></li>
+                        <li><a id="nav-badges" href="http://stackoverflow.com/help/badges">Badges</a></li>
+                        <li><a id="nav-unanswered" href="http://stackoverflow.com/unanswered">Unanswered</a></li>
+                    </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion" href="http://stackoverflow.com/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+                <div id="system-message">Ten. Million. Questions. Let's celebrate <a href="http://stackoverflow.com/10m">all we've done together</a>.
+                </div>
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope="" itemtype="http://schema.org/Question">
+    <link itemprop="image" href="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=41f6e13ade69">
+			<!--googleoff: all-->
+
+<div id="herobox-mini">
+    <div id="hero-content">
+        <span id="controls">
+            <a href="http://stackoverflow.com/tour" id="tell-me-more" class="button">Take the 2-minute tour</a>
+            <span id="close"><a title="click to dismiss">×</a></span>
+        </span>
+        <div id="blurb">
+            Stack Overflow is a question and answer site for professional and enthusiast programmers. It's 100% free.
+        </div>        
+    </div>
+    <script>
+        $('#tell-me-more').click(function () {
+            var clickSource = $("body").attr("class") + '-mini';
+            if ($("body").hasClass("questions-page")) {
+                clickSource = 'questionpagemini';
+            } else if ($("body").hasClass("question-page")) {
+                clickSource = 'questionpagemini';
+            } else if ($("body").hasClass("home-page")) {
+                clickSource = 'homepagemini';
+            }
+
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("aboutpage.click", { aboutclick_location: clickSource } , true);
+            });
+        });
+        $('#herobox-mini #close').click(function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: "close" }, true);
+            });
+            $.cookie("hero", "none", { path: "/", expires: 365 });
+            var $hero = $("#herobox-mini");
+            $hero.slideUp('fast', function () { $hero.remove(); });
+            return false;
+        });
+    </script>
+</div>
+			<!--googleon: all-->
+			<div id="question-header">
+                <h1 itemprop="name"><a href="http://stackoverflow.com/questions/4800099/how-to-identify-multiple-usb-serial-adapters-under-ubuntu-10-1" class="question-hyperlink">How to identify multiple USB-serial adapters under Ubuntu 10.1</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="4800099" id="question">
+
+    <script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk789633691",4).setZone(43); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk789633691"><a href="http://engine.adzerk.net/r?e=eyJhdiI6NDE0LCJhdCI6NCwiYnQiOjAsImNtIjoxODY2MjQsImNoIjoxMTc4LCJjayI6e30sImNyIjo2ODQyODIsImRpIjoiMTAxMjFlNGIzMTY2NDUwMDk0ODNhNjE1MzE3NzZmYmUiLCJkbSI6MSwiZmMiOjcwODQzNiwiZmwiOjQzMTc4MCwiaXAiOiIxODYuOTUuNDcuNDgiLCJrdyI6ImxpbnV4LHVidW50dSx1c2IsdXNic2VyaWFsLGlkZW50aWZpY2F0aW9uIiwibnciOjIyLCJwYyI6MCwicHIiOjE2MDQsInJ0IjoxLCJzdCI6ODI3NywidWsiOiJ1ZTEtNzYzOGUzMDc1MTE0NGEwZDljYTc1MDM2NDI1ODE4YTYiLCJ6biI6NDMsInRzIjoxNDQxOTQ3MTE5NTg3LCJiZiI6dHJ1ZSwicG4iOiJhZHplcms3ODk2MzM2OTEiLCJ1ciI6Imh0dHA6Ly9jYXJlZXJzLnN0YWNrb3ZlcmZsb3cuY29tL3Byb2R1Y3RzP3V0bV9zb3VyY2U9c3RhY2tvdmVyZmxvdy5jb20mdXRtX21lZGl1bT1hZCZ1dG1fY2FtcGFpZ249ZW1wbG95ZXJzLXN1cGVyaGVyb2VzJnV0bV9jb250ZW50PWxiLXN1cGVyaGVyb2VzIn0&amp;s=1RALzoLwsqJ6SFXDbmpTpSt2lsc" rel="nofollow" target="_blank" title=""><img class="yxnqkfrgyhsnnvqwfcxi" src="how_to_identify_multiple_usb_serial_adapter_files/7b03b9d327834757b98b657002b37789.png" title="" alt="" border="0" height="90" width="728"></a><img class="yxnqkfrgyhsnnvqwfcxi" src="how_to_identify_multiple_usb_serial_adapter_files/i_002.gif" style="position:absolute;" border="0" height="0px" width="0px"></div>    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="4800099" type="hidden">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">7</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="#" title="This is a favorite question (click again to undo)">favorite</a>
+        <div class="favoritecount"><b>5</b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>I am reading data from multiple identical USB-serial adapters under Ubuntu 10.1.</p>
+
+<p>On occasion, their /dev/tty path changes (eg if other USB devices are connected on startup).</p>
+
+<p>I need a way of repeatedly referring to the same adapter through any such changes.</p>
+
+<p>The devices all have the same serial numbers, according to udevadm.</p>
+
+<p>I think the most likely option is to identify an adapter by which port it is connected to (they don't get  moved around).</p>
+
+<p>I can find all sorts of interesting /dev paths that might work, but 
+despite all the discussion about udev online, I can't locate a 
+definitive statement about whether some of these paths are static if the
+ device is plugged into a static port.</p>
+    </div>
+    <div class="post-taglist">
+        <a href="http://stackoverflow.com/questions/tagged/linux" class="post-tag js-gps-track" title="show questions tagged 'linux'" rel="tag">linux</a> <a href="http://stackoverflow.com/questions/tagged/ubuntu" class="post-tag js-gps-track" title="show questions tagged 'ubuntu'" rel="tag">ubuntu</a> <a href="http://stackoverflow.com/questions/tagged/usb" class="post-tag js-gps-track" title="show questions tagged 'usb'" rel="tag">usb</a> <a href="http://stackoverflow.com/questions/tagged/usbserial" class="post-tag js-gps-track" title="show questions tagged 'usbserial'" rel="tag">usbserial</a> <a href="http://stackoverflow.com/questions/tagged/identification" class="post-tag js-gps-track" title="show questions tagged 'identification'" rel="tag">identification</a> 
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/q/4800099" title="short permalink to this question" class="short-link" id="link-post-4800099">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/4800099/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td class="post-signature" align="right">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/4800099/revisions" title="show all edits to this post">edited <span title="2014-07-29 12:36:24Z" class="relativetime">Jul 29 '14 at 12:36</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/58074/dsolimano"><div class="gravatar-wrapper-32"><img src="how_to_identify_multiple_usb_serial_adapter_files/297b31165c5ef426c8fa89c3375b0d2a.jpeg" alt="" height="32" width="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/58074/dsolimano">dsolimano</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">5,726</span><span title="3 gold badges"><span class="badge1"></span><span class="badgecount">3</span></span><span title="23 silver badges"><span class="badge2"></span><span class="badgecount">23</span></span><span title="39 bronze badges"><span class="badge3"></span><span class="badgecount">39</span></span>
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2011-01-25 23:38:47Z" class="relativetime">Jan 25 '11 at 23:38</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/589888/user589888"><div class="gravatar-wrapper-32"><img src="how_to_identify_multiple_usb_serial_adapter_files/080600b01a09d2fa0c9d42e5e9e00a9d.png" alt="" height="32" width="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/589888/user589888">user589888</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">46</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="3 bronze badges"><span class="badge3"></span><span class="badgecount">3</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-4800099" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-26615277" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I found this superuser answer very useful: <a href="http://superuser.com/a/536648/27510">superuser.com/a/536648/27510</a></span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/240633/ergosys" title="20139 reputation" class="comment-user">ergosys</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment26615277_4800099"><span title="2013-08-10 23:21:00Z" class="relativetime-clean">Aug 10 '13 at 23:21</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-4800099" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#" onclick=""></a>
+        </div>         
+    </td>
+</tr>        </tbody></table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								7 Answers
+                                <span style="display:none;" itemprop="answerCount">7</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="http://stackoverflow.com/questions/4800099/how-to-identify-multiple-usb-serial-adapters-under-ubuntu-10-1?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active">active</a>
+        <a href="http://stackoverflow.com/questions/4800099/how-to-identify-multiple-usb-serial-adapters-under-ubuntu-10-1?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest">oldest</a>
+        <a class="youarehere" href="http://stackoverflow.com/questions/4800099/how-to-identify-multiple-usb-serial-adapters-under-ubuntu-10-1?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes">votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="5970273"></a>
+<div id="answer-5970273" class="answer" data-answerid="5970273" itemscope="" itemtype="http://schema.org/Answer">
+
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="5970273" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">9</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>There is a solution. It's better late then never ;)</p>
+
+<p>Use the following <code>udev</code> rule to map <code>/dev/ttyUSB{?}</code> devices into the <code>/dev/usb-ports/%bus_id-%port_id</code> link.</p>
+
+<p>Here is my <code>/etc/udev/rules.d/usb-parse-devpath.rules:</code></p>
+
+<pre><code>ACTION=="add", KERNEL=="ttyUSB[0-9]*", PROGRAM="/etc/udev/rules.d/usb-parse-devpath.pm %p", SYMLINK+="usb-ports/%c"
+</code></pre>
+
+<p>And the <code>usb-parse-devpath.pm</code> script:</p>
+
+<pre><code>#!/usr/bin/perl -w
+
+@items = split("/", $ARGV[0]);
+for ($i = 0; $i &lt; @items; $i++) {
+    if ($items[$i] =~ m/^usb[0-9]+$/) {
+        print $items[$i + 1] . "\n";
+        last;
+    }
+}
+</code></pre>
+
+<p>As you can see this helps us to create named links to <code>/dev/ttyUSB{?}</code> devices and place them at <code>/dev/usb-ports</code> in the following format: <code>bus_id-port_id</code>.</p>
+
+<p>For example, the next command gives me the following:</p>
+
+<pre><code>$ udevadm info --query=path --name=/dev/ttyUSB0
+/devices/pci0000:00/0000:00:1d.1/usb3/3-1/3-1:1.0/ttyUSB0/tty/ttyUSB0
+</code></pre>
+
+<p>So, the <code>bus_id</code> is <code>3</code> and <code>port_id</code> is <code>1</code> and now I have following in my <code>/dev/usb-ports</code>:</p>
+
+<pre><code>$ ls -al /dev/usb-ports
+lrwxrwxrwx  1 root root   10 Май 12 00:26 3-1 -&gt; ../ttyUSB0
+</code></pre>
+
+<p>Regards.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/5970273" title="short permalink to this answer" class="short-link" id="link-post-5970273">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/5970273/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2011-05-11 20:33:04Z" class="relativetime">May 11 '11 at 20:33</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/651394/ilya-matveychikov"><div class="gravatar-wrapper-32"><img src="how_to_identify_multiple_usb_serial_adapter_files/f7eed7c0171fea41bed5f94cf641348a.png" alt="" height="32" width="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/651394/ilya-matveychikov">Ilya Matveychikov</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">2,552</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="9 silver badges"><span class="badge2"></span><span class="badgecount">9</span></span><span title="27 bronze badges"><span class="badge3"></span><span class="badgecount">27</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-5970273" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-18148164" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of 'useful comment' votes received" class="cool">2</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I found that changing  print 
+$items[$i + 1]  to  print $items[$i + 2]  is more useful here; since 
+both USB ports on the front of my computer seemed to map to '1-1' under 
+the former!</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/11643/james-muscat" title="391 reputation" class="comment-user">James Muscat</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment18148164_5970273"><span title="2012-11-09 11:13:47Z" class="relativetime-clean">Nov 9 '12 at 11:13</span></a></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-18148506" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@JamesMuscat: Thank you for your reply.</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/651394/ilya-matveychikov" title="2552 reputation" class="comment-user">Ilya Matveychikov</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="#comment18148506_5970273"><span title="2012-11-09 11:27:59Z" class="relativetime-clean">Nov 9 '12 at 11:27</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-5970273" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1441141481",4).setZone(44); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1441141481"><a href="http://engine.adzerk.net/r?e=eyJhdiI6NDE0LCJhdCI6NCwiYnQiOjAsImNtIjoxODY2MjQsImNoIjoxMTc4LCJjayI6e30sImNyIjo3MjI2ODIsImRpIjoiNDVjZGYxNWJjYjVmNGIxNDhhMjlkMjkzMzdkMzI0NjgiLCJkbSI6MSwiZmMiOjc1MjI0MSwiZmwiOjQ0MTMzNCwiaXAiOiIxODYuOTUuNDcuNDgiLCJrdyI6ImxpbnV4LHVidW50dSx1c2IsdXNic2VyaWFsLGlkZW50aWZpY2F0aW9uIiwibnciOjIyLCJwYyI6MCwicHIiOjE1NjgsInJ0IjoxLCJzdCI6ODI3NywidWsiOiJ1ZTEtNzYzOGUzMDc1MTE0NGEwZDljYTc1MDM2NDI1ODE4YTYiLCJ6biI6NDQsInRzIjoxNDQxOTQ3MTE5NTkwLCJiZiI6dHJ1ZSwicG4iOiJhZHplcmsxNDQxMTQxNDgxIiwidXIiOiJodHRwOi8vY2FyZWVycy5zdGFja292ZXJmbG93LmNvbS9jdi9nZXQtb25lP3V0bV9zb3VyY2U9c3RhY2tvdmVyZmxvdy5jb20mdXRtX21lZGl1bT1hZCZ1dG1fY2FtcGFpZ249Y2FuZGlkYXRlcy1hZGQtY3YmdXRtX2NvbnRlbnQ9bGItYmlyZHMifQ&amp;s=e9Oz4EaJdfgT0Jzh4CAd7pCG5eE" rel="nofollow" target="_blank" title=""><img class="yxnqkfrgyhsnnvqwfcxi" src="how_to_identify_multiple_usb_serial_adapter_files/7fcccaae8acb4e2e84bb7ea421d299ce.jpg" title="" alt="" border="0" height="90" width="728"></a><img class="yxnqkfrgyhsnnvqwfcxi" src="how_to_identify_multiple_usb_serial_adapter_files/i.gif" style="position:absolute;" border="0" height="0px" width="0px"></div>
+  
+<a name="9969951"></a>
+<div id="answer-9969951" class="answer" data-answerid="9969951" itemscope="" itemtype="http://schema.org/Answer">
+
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="9969951" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Much like Ilya Matvejchikov's answer, a good solution is to add udev 
+rules to do what you want with the device. Like you, I was having a 
+similar problem. I had a UPS on a USB-to-multi-serial adapter and 
+occasionally the system would switch around the /dev/tty numbers.</p>
+
+<p>My solution was to create a rule to match the type of device by 
+driver and port, then create a symbolic link to the port to which my UPS
+ was attached. I used NUT to monitor the UPS, which was always plugged 
+into the same physical port.</p>
+
+<pre><code># File contents of /etc/udev/rules.d/75-nut-ups.rules
+# Create /dev/nut-ups0 to use as a persistent serial device that can be used
+# reliably by nut to communicate with a UPS attached to the system.
+# The UPS is attached to the first port of a MosSemiconductor dual USB
+# serial adapter.
+KERNELS=="ttyUSB*", SUBSYSTEMS=="usb-serial", DRIVERS=="moschip7720", ATTRS{port_number}=="0", SYMLINK+="nut-ups0"
+</code></pre>
+
+<p>Now I configure NUT to always use a constant /dev/nut-ups0, as the 
+serial port and the rule takes care of mapping properly when the 
+usb-serial device is recognized.</p>
+
+<p>You can use the lsusb command to find out the actual device name to use in the rule when it's plugged in.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/9969951" title="short permalink to this answer" class="short-link" id="link-post-9969951">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/9969951/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2012-04-02 01:32:39Z" class="relativetime">Apr 2 '12 at 1:32</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/1307074/suncat2000"><div class="gravatar-wrapper-32"><img src="how_to_identify_multiple_usb_serial_adapter_files/dcc5922243b73044ffa38f6129af5f70.png" alt="" height="32" width="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/1307074/suncat2000">Suncat2000</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">100</span><span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="8 bronze badges"><span class="badge3"></span><span class="badgecount">8</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-9969951" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-9969951" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="17810038"></a>
+<div id="answer-17810038" class="answer" data-answerid="17810038" itemscope="" itemtype="http://schema.org/Answer">
+
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="17810038" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Look with <code>$ udevadm info -n /dev/ttyUSB0 -a</code> which port 
+your USB device is plugged in. The variable KERNELS of one of the parent
+ devices should be something like KERNELS=="1-1.2:1.0".</p>
+
+<p>Create a udev rule:</p>
+
+<pre><code>SUBSYSTEM=="tty", KERNELS=="1-1.2:1.0", SYMLINK+="ttyUSB42"
+SUBSYSTEM=="tty", KERNELS=="1-1.3:1.0", SYMLINK+="usb-serial"
+</code></pre>
+
+<p>and trigger udev</p>
+
+<pre><code>$ udevadm trigger
+</code></pre>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/17810038" title="short permalink to this answer" class="short-link" id="link-post-17810038">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/17810038/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-07-23 12:19:31Z" class="relativetime">Jul 23 '13 at 12:19</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/2274863/mickeyrourkeske"><div class="gravatar-wrapper-32"><img src="how_to_identify_multiple_usb_serial_adapter_files/abae8f1eab991d128bb00727469d0c7e.png" alt="" height="32" width="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/2274863/mickeyrourkeske">mickeyrourkeske</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">31</span><span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="4 bronze badges"><span class="badge3"></span><span class="badgecount">4</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-17810038" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-17810038" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="4831076"></a>
+<div id="answer-4831076" class="answer" data-answerid="4831076" itemscope="" itemtype="http://schema.org/Answer">
+
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="4831076" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<blockquote>
+  <p>The devices all have the same serial numbers [..]</p>
+</blockquote>
+
+<p>The usb-parse-devpath.pm addresses this by using the bus and port id of the adapter.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/4831076" title="short permalink to this answer" class="short-link" id="link-post-4831076">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/4831076/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td class="post-signature" align="right">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/4831076/revisions" title="show all edits to this post">edited <span title="2011-08-09 13:24:48Z" class="relativetime">Aug 9 '11 at 13:24</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/-1/community"><div class="gravatar-wrapper-32"><img src="how_to_identify_multiple_usb_serial_adapter_files/a007be5a61f6aa8f3e85ae2fc18dd66e.png" alt="" height="32" width="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/-1/community">Community</a><span class="mod-flair" title="moderator">♦</span><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">1</span>
+    </div>
+</div>    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2011-01-28 17:15:02Z" class="relativetime">Jan 28 '11 at 17:15</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/410847/turbo-j"><div class="gravatar-wrapper-32"><img src="how_to_identify_multiple_usb_serial_adapter_files/9a354e99dd64adf823aa72c4ee22a1fc.jpeg" alt="" height="32" width="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/410847/turbo-j">Turbo J</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">4,011</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="10 silver badges"><span class="badge2"></span><span class="badgecount">10</span></span><span title="23 bronze badges"><span class="badge3"></span><span class="badgecount">23</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-4831076" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-4831076" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="18991231"></a>
+<div id="answer-18991231" class="answer" data-answerid="18991231" itemscope="" itemtype="http://schema.org/Answer">
+
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="18991231" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>usb-devices can get you the port number and the bus/dev enumeration.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/18991231" title="short permalink to this answer" class="short-link" id="link-post-18991231">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/18991231/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-09-24 20:16:42Z" class="relativetime">Sep 24 '13 at 20:16</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/741808/richmb"><div class="gravatar-wrapper-32"><img src="how_to_identify_multiple_usb_serial_adapter_files/c55dc7b52865ccce67fd21e09e5a7d5b.png" alt="" height="32" width="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/741808/richmb">richmb</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">372</span><span title="4 silver badges"><span class="badge2"></span><span class="badgecount">4</span></span><span title="13 bronze badges"><span class="badge3"></span><span class="badgecount">13</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-18991231" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-18991231" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="20808351"></a>
+<div id="answer-20808351" class="answer" data-answerid="20808351" itemscope="" itemtype="http://schema.org/Answer">
+
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="20808351" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I too was searching this topic for a way to find which physical USB 
+device was assigned/connected to a logical /dev device name.  So, after 
+some trial and error, this is what worked best for me:</p>
+
+<p>See what logical ttyUSBx devices exist (where x is 0, 1, 2...):</p>
+
+<pre><code>$ ls /dev
+</code></pre>
+
+<p>Show bus and device numbers for all usb-serial adapters:</p>
+
+<pre><code>$ lsusb 
+</code></pre>
+
+<p>Finally, use:</p>
+
+<pre><code>$ udevadm info --name=ttyUSBx --attribute-walk | grep num  
+</code></pre>
+
+<p>Now inspect the udevadm output to match the logical device name to the actual physical device.  Here my listing when I did it:</p>
+
+<pre><code>$ lsusb
+Bus 002 Device 005: ID 0403:6001 Future Technology Devices International, Ltd FT232 USB-Serial     (UART) IC
+Bus 002 Device 004: ID 067b:2303 Prolific Technology, Inc. PL2303 Serial Port
+Bus 002 Device 002: ID 80ee:0021  
+Bus 002 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+
+$ udevadm info --name=ttyUSB0 --attribute-walk | grep num
+    ATTRS{port_number}=="0"
+    ATTRS{urbnum}=="812"
+    ATTRS{busnum}=="2"
+    ATTRS{devnum}=="5"
+    ATTRS{urbnum}=="115"
+    ATTRS{busnum}=="2"
+    ATTRS{devnum}=="1"
+    ATTRS{numa_node}=="-1"
+
+$ udevadm info --name=ttyUSB1 --attribute-walk | grep num
+    ATTRS{port_number}=="0"
+    ATTRS{urbnum}=="465"
+    ATTRS{busnum}=="2"
+    ATTRS{devnum}=="4"
+    ATTRS{urbnum}=="115"
+    ATTRS{busnum}=="2"
+    ATTRS{devnum}=="1"
+    ATTRS{numa_node}=="-1"
+</code></pre>
+
+<p>So, in my case, ttyUSB0 is associated with the device on bus2, 
+device5, which is the Future Technology Devices International USB to 
+Serial Adapter; and likewise, ttyUSB1 is associated with the device on 
+bus2, device4, which is the Prolific Technology, Inc. USB to Serial 
+adapter.  </p>
+
+<p>And as has been pointed out, the command:</p>
+
+<pre><code>$ usb-devices
+</code></pre>
+
+<p>Will get you the same info in a one-line manner.  I thought I'd post 
+the details that helped me learn how the stuff worked behind the 
+scenes...</p>
+
+<p>Hope that was helpful :)</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/20808351" title="short permalink to this answer" class="short-link" id="link-post-20808351">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/20808351/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td class="post-signature" align="right">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/20808351/revisions" title="show all edits to this post">edited <span title="2013-12-27 23:05:17Z" class="relativetime">Dec 27 '13 at 23:05</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        <br>
+        
+    </div>
+</div>    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-12-27 21:54:52Z" class="relativetime">Dec 27 '13 at 21:54</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/2907598/gotil"><div class="gravatar-wrapper-32"><img src="how_to_identify_multiple_usb_serial_adapter_files/RHjvC.jpg" alt="" height="32" width="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/2907598/gotil">GOTIL</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">1</span><span title="2 bronze badges"><span class="badge3"></span><span class="badgecount">2</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-20808351" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-20808351" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="27790202"></a>
+<div id="answer-27790202" class="answer" data-answerid="27790202" itemscope="" itemtype="http://schema.org/Answer">
+
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input name="_id_" value="27790202" type="hidden">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I have many USB to Serial devices with <em>each</em> many ports and the solutions 
+mentioned above did not quite did it for me.  </p>
+
+<p>The USB "KERNEL" was not enough in my case, but I found the port number.</p>
+
+<p>I am aware that what I'm proposing now  might be considered an insane hack, 
+but it works for me..<br>
+for now..</p>
+
+<p>I would actually be pleased to see a more elegant suggestion 
+that accomplish something similar..</p>
+
+<p>So... Based on the previous answer form Ilya Matveychikov</p>
+
+<p>File: /etc/udev/rules.d/usb-parse-devpath.sh</p>
+
+<pre><code>#!/bin/bash
+
+DEVNUM=$(echo "${1}" | rev | cut -d'/' -f4 | rev | tr -d '-' | tr -d '.' | tr -d ':')
+PORTNUM=$(/sbin/udevadm info -a --path=${1} | grep "ATTRS{port_number}" | head -1 | cut -d'"' -f2)
+PRODUCT=$(/sbin/udevadm info -a --path=${1} | grep "ATTRS{product}" | head -1 | cut -d'"' -f2 | tr -d '/' | tr ' ' '_')
+
+NEWID="ttyUSB_${PRODUCT}_${DEVNUM}${PORTNUM}"
+
+#echo "${NEWID} :: $1" &gt;&gt; /tmp/DEBUG_udev.txt
+
+echo "$NEWID"
+</code></pre>
+
+<p>And File: /etc/udev/rules.d/99-usb-serial.rules</p>
+
+<pre><code>ACTION=="add", KERNEL=="ttyUSB[0-9]*", PROGRAM="/etc/udev/rules.d/usb-parse-devpath.sh %p", SYMLINK+="TTYUSBs/%c"
+</code></pre>
+
+<p>The result look something like this:</p>
+
+<pre><code># ls -l /dev/TTYUSBs
+
+lrwxrwxrwx. 1 root root 11 Jan  5 18:46 ttyUSB_Edgeport416_435100 -&gt; ../ttyUSB20
+lrwxrwxrwx. 1 root root 11 Jan  5 18:46 ttyUSB_Edgeport416_435101 -&gt; ../ttyUSB21
+lrwxrwxrwx. 1 root root 11 Jan  5 18:46 ttyUSB_Edgeport416_435102 -&gt; ../ttyUSB22
+lrwxrwxrwx. 1 root root 11 Jan  5 18:46 ttyUSB_Edgeport416_435103 -&gt; ../ttyUSB23
+lrwxrwxrwx. 1 root root 11 Jan  5 18:46 ttyUSB_Edgeport416_435104 -&gt; ../ttyUSB24
+lrwxrwxrwx. 1 root root 11 Jan  5 18:46 ttyUSB_Edgeport416_435105 -&gt; ../ttyUSB25
+lrwxrwxrwx. 1 root root 11 Jan  5 18:46 ttyUSB_Edgeport416_435106 -&gt; ../ttyUSB26
+lrwxrwxrwx. 1 root root 11 Jan  5 18:46 ttyUSB_Edgeport416_435107 -&gt; ../ttyUSB27
+lrwxrwxrwx. 1 root root 11 Jan  5 18:46 ttyUSB_Edgeport416_436100 -&gt; ../ttyUSB28
+lrwxrwxrwx. 1 root root 11 Jan  5 18:46 ttyUSB_Edgeport416_436101 -&gt; ../ttyUSB29
+lrwxrwxrwx. 1 root root 11 Jan  5 18:46 ttyUSB_Edgeport416_436102 -&gt; ../ttyUSB30
+lrwxrwxrwx. 1 root root 11 Jan  5 18:46 ttyUSB_Edgeport416_436103 -&gt; ../ttyUSB31
+lrwxrwxrwx. 1 root root 11 Jan  5 18:46 ttyUSB_Edgeport416_436104 -&gt; ../ttyUSB32
+lrwxrwxrwx. 1 root root 11 Jan  5 18:46 ttyUSB_Edgeport416_436105 -&gt; ../ttyUSB33
+lrwxrwxrwx. 1 root root 11 Jan  5 18:46 ttyUSB_Edgeport416_436106 -&gt; ../ttyUSB34
+lrwxrwxrwx. 1 root root 11 Jan  5 18:46 ttyUSB_Edgeport416_436107 -&gt; ../ttyUSB35
+lrwxrwxrwx. 1 root root 11 Jan  5 18:46 ttyUSB_Edgeport4_4341100 -&gt; ../ttyUSB38
+lrwxrwxrwx. 1 root root 11 Jan  5 18:46 ttyUSB_Edgeport4_4341101 -&gt; ../ttyUSB39
+lrwxrwxrwx. 1 root root 11 Jan  5 18:46 ttyUSB_Edgeport4_4342100 -&gt; ../ttyUSB36
+lrwxrwxrwx. 1 root root 11 Jan  5 18:46 ttyUSB_Edgeport4_4342101 -&gt; ../ttyUSB37
+lrwxrwxrwx. 1 root root 10 Jan  5 18:46 ttyUSB_Edgeport8_421100 -&gt; ../ttyUSB2
+lrwxrwxrwx. 1 root root 10 Jan  5 18:46 ttyUSB_Edgeport8_421101 -&gt; ../ttyUSB3
+lrwxrwxrwx. 1 root root 10 Jan  5 18:46 ttyUSB_Edgeport8_422100 -&gt; ../ttyUSB4
+lrwxrwxrwx. 1 root root 10 Jan  5 18:46 ttyUSB_Edgeport8_422101 -&gt; ../ttyUSB5
+lrwxrwxrwx. 1 root root 11 Jan  5 18:46 ttyUSB_Edgeport8_423100 -&gt; ../ttyUSB18
+lrwxrwxrwx. 1 root root 11 Jan  5 18:46 ttyUSB_Edgeport8_423101 -&gt; ../ttyUSB19
+lrwxrwxrwx. 1 root root 10 Jan  5 18:46 ttyUSB_Edgeport8_424100 -&gt; ../ttyUSB0
+lrwxrwxrwx. 1 root root 10 Jan  5 18:46 ttyUSB_Edgeport8_424101 -&gt; ../ttyUSB1
+lrwxrwxrwx. 1 root root 10 Jan  5 18:46 ttyUSB_Keyspan_USA-49WG_431100 -&gt; ../ttyUSB6
+lrwxrwxrwx. 1 root root 10 Jan  5 18:46 ttyUSB_Keyspan_USA-49WG_431101 -&gt; ../ttyUSB7
+lrwxrwxrwx. 1 root root 10 Jan  5 18:46 ttyUSB_Keyspan_USA-49WG_431102 -&gt; ../ttyUSB8
+lrwxrwxrwx. 1 root root 10 Jan  5 18:46 ttyUSB_Keyspan_USA-49WG_431103 -&gt; ../ttyUSB9
+lrwxrwxrwx. 1 root root 11 Jan  5 18:46 ttyUSB_Keyspan_USA-49WG_432100 -&gt; ../ttyUSB10
+lrwxrwxrwx. 1 root root 11 Jan  5 18:46 ttyUSB_Keyspan_USA-49WG_432101 -&gt; ../ttyUSB11
+lrwxrwxrwx. 1 root root 11 Jan  5 18:46 ttyUSB_Keyspan_USA-49WG_432102 -&gt; ../ttyUSB12
+lrwxrwxrwx. 1 root root 11 Jan  5 18:46 ttyUSB_Keyspan_USA-49WG_432103 -&gt; ../ttyUSB13
+lrwxrwxrwx. 1 root root 11 Jan  5 18:46 ttyUSB_Keyspan_USA-49WG_433100 -&gt; ../ttyUSB14
+lrwxrwxrwx. 1 root root 11 Jan  5 18:46 ttyUSB_Keyspan_USA-49WG_433101 -&gt; ../ttyUSB15
+lrwxrwxrwx. 1 root root 11 Jan  5 18:46 ttyUSB_Keyspan_USA-49WG_433102 -&gt; ../ttyUSB16
+lrwxrwxrwx. 1 root root 11 Jan  5 18:46 ttyUSB_Keyspan_USA-49WG_433103 -&gt; ../ttyUSB17
+</code></pre>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/27790202" title="short permalink to this answer" class="short-link" id="link-post-27790202">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/27790202/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td class="post-signature" align="right">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2015-01-06 00:21:05Z" class="relativetime">Jan 6 at 0:21</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/4422006/nicolas-tremblay"><div class="gravatar-wrapper-32"><img src="how_to_identify_multiple_usb_serial_adapter_files/photo.jpg" alt="" height="32" width="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/4422006/nicolas-tremblay">Nicolas Tremblay</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">1</span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-27790202" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-27790202" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+									<a name="new-answer"></a>
+						<form id="post-form" action="/questions/4800099/answer/submit" method="post" class="post-form">
+						    <input id="post-id" value="4800099" type="hidden">
+                            <input id="qualityBanWarningShown" name="qualityBanWarningShown" value="false" type="hidden">
+                            <input name="referrer" value="" type="hidden">
+							<h2 class="space">Your Answer</h2>
+
+
+
+            <script>
+            StackExchange.ifUsing("editor", function () {
+                StackExchange.using("externalEditor", function () {
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.init();
+                    });
+                });
+            }, "code-snippets");
+        </script>
+    
+
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+            // Have to fire editor after snippets, if snippets enabled
+            if (StackExchange.options.snippets.enabled) {
+                StackExchange.using("snippets", function() {
+                    createEditor();
+                });
+            }
+            else {
+                createEditor();
+            }
+        });
+
+        function createEditor() {
+            prepareEditor({
+                heartbeatType: 'answer',
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: true,
+                    discardSelector: ".discard-answer"
+                ,immediatelyShowMarkdownHelp:true
+                });
+                
+
+        }
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor js-post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"><ul id="wmd-button-row" class="wmd-button-row"><li style="left: 0px;" class="wmd-button" id="wmd-bold-button"><span style="background-position: 0px -20px;"></span></li><li style="left: 25px;" class="wmd-button" id="wmd-italic-button"><span style="background-position: -20px -20px;"></span></li><li style="left: 50px;" class="wmd-spacer" id="wmd-spacer1"><span style="background-position: -40px -20px;"></span></li><li style="left: 75px;" class="wmd-button" id="wmd-link-button"><span style="background-position: -40px -20px;"></span></li><li style="left: 100px;" class="wmd-button" id="wmd-quote-button"><span style="background-position: -60px -20px;"></span></li><li style="left: 125px;" class="wmd-button" id="wmd-code-button"><span style="background-position: -80px -20px;"></span></li><li style="left: 150px;" class="wmd-button" id="wmd-image-button"><span style="background-position: -100px -20px;"></span></li><li style="left: 175px;" class="wmd-spacer" id="wmd-spacer2"><span style="background-position: -120px -20px;"></span></li><li style="left: 200px;" class="wmd-button" id="wmd-olist-button"><span style="background-position: -120px -20px;"></span></li><li style="left: 225px;" class="wmd-button" id="wmd-ulist-button"><span style="background-position: -140px -20px;"></span></li><li style="left: 250px;" class="wmd-button" id="wmd-heading-button"><span style="background-position: -160px -20px;"></span></li><li style="left: 275px;" class="wmd-button" id="wmd-hr-button"><span style="background-position: -180px -20px;"></span></li><li style="left: 300px;" class="wmd-spacer" id="wmd-spacer3"><span style="background-position: -200px -20px;"></span></li><li style="left: 325px;" class="wmd-button" id="wmd-undo-button"><span style="background-position: -200px -20px;"></span></li><li style="left: 350px;" class="wmd-button" id="wmd-redo-button"><span style="background-position: -220px -20px;"></span></li></ul></div>
+            <textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        </div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" value="29089ab594852640f10f61a1c1077b32" type="hidden">
+        <input id="author" name="author" type="text">
+    </div>
+
+
+
+</div>
+							<div style="position: relative;">
+								
+								            <div class="form-item new-post-login">
+        
+                <div class="new-login-form">
+                    <div class="new-login-left">
+                        <h3>Sign up or <a id="login-link" href="http://stackoverflow.com/users/login?ssrc=question_page&amp;returnurl=%2fquestions%2f4800099%2fhow-to-identify-multiple-usb-serial-adapters-under-ubuntu-10-1%23new-answer">log in</a></h3>
+                        <script>
+                            StackExchange.ready(function () {
+                                StackExchange.helpers.onClickDraftSave('#login-link');
+                                    
+                                var $window = $(window),
+                                    onScroll = function(e) {
+                                        var $elem = $('.new-login-left'),
+                                            docViewTop = $window.scrollTop(),
+                                            docViewBottom = docViewTop + $window.height(),
+                                            elemTop = $elem.offset().top,
+                                            elemBottom = elemTop + $elem.height();							
+                                        if ((docViewTop < elemTop) && (docViewBottom > elemBottom))  {
+                                            StackExchange.using('gps', function() { StackExchange.gps.track('embedded_signup_form.view', { location: 'question_page' }); });
+                                            $window.unbind('scroll', onScroll);
+                                        }
+                                    };
+                                $window.on('scroll', onScroll);
+                                    
+                            });
+                        </script>
+                        <div class="preferred-login google-login">
+                            <p><span class="icon"></span><span>Sign up using Google</span></p>
+                        </div>
+                        <div class="preferred-login facebook-login">
+                            <p><span class="icon"></span><span>Sign up using Facebook</span></p>
+                        </div>
+                        <div class="preferred-login stackexchange-login">
+                            <p><span class="icon"></span><span>Sign up using Stack Exchange</span></p>
+                        </div>
+                    </div>
+                    <input name="manual-openid" class="manual-openid" type="hidden">
+                    <input name="use-facebook" class="use-facebook" value="false" type="hidden">
+                    <input name="use-google" class="use-google" value="false" type="hidden">
+                    <input class="submit-openid" value="Submit" style="display:none" type="button">
+                    <div class="new-login-right">
+                                <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tbody><tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" size="30" maxlength="30" tabindex="105" type="text">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" size="30" maxlength="100" tabindex="106" placeholder="required, but never shown" type="email">
+                </div>
+            </td>
+        </tr>
+        </tbody></table>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+                StackExchange.ready(
+                    function () {
+                        StackExchange.openid.initPostLogin('.new-post-login', '%2fquestions%2f4800099%2fhow-to-identify-multiple-usb-serial-adapters-under-ubuntu-10-1%23new-answer', 'question_page');
+                    }
+                );
+            </script>
+            <noscript>
+                        <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" />
+                </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+
+            </noscript>
+
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" value="Post Your Answer" tabindex="110" type="submit">
+									<a href="#" class="discard-answer dno">discard</a>
+
+<p class="privacy-policy-agreement">
+By posting your answer, you agree to the <a href="http://stackexchange.com/legal/privacy-policy" target="_blank">privacy policy</a> and <a href="http://stackexchange.com/legal/terms-of-service" target="_blank">terms of service</a>.</p>
+<input name="legalLinksShown" value="1" type="hidden">								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you're looking for?							Browse other questions tagged <a href="http://stackoverflow.com/questions/tagged/linux" class="post-tag" title="show questions tagged 'linux'" rel="tag">linux</a> <a href="http://stackoverflow.com/questions/tagged/ubuntu" class="post-tag" title="show questions tagged 'ubuntu'" rel="tag">ubuntu</a> <a href="http://stackoverflow.com/questions/tagged/usb" class="post-tag" title="show questions tagged 'usb'" rel="tag">usb</a> <a href="http://stackoverflow.com/questions/tagged/usbserial" class="post-tag" title="show questions tagged 'usbserial'" rel="tag">usbserial</a> <a href="http://stackoverflow.com/questions/tagged/identification" class="post-tag" title="show questions tagged 'identification'" rel="tag">identification</a>  or <a href="http://stackoverflow.com/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tbody><tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2011-01-25 23:38:47Z"><b>4 years ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>15031 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="http://stackoverflow.com/questions/4800099/how-to-identify-multiple-usb-serial-adapters-under-ubuntu-10-1?lastactivity" class="lastactivity-link" title="2015-01-06 00:21:05Z">8 months ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </tbody></table>
+			    </div>
+						
+			<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk156009635",[17,2221]).setZone(45); });
+            </script>
+            
+        <div id="hireme">
+            <script>
+(function(){function f(n){var t=i.createElement("link");t.type="text/css";t.rel="stylesheet";t.href=n;r.appendChild(t)}function e(t,r,f,e){var s=(r.cl||[]).join(" "),o=i.getElementById(t);o&&(s&&(o.className+=" "+s),o.innerHTML=r.cn.replace("&pt=0","&pt="+(e||"0")),o.onmousedown=function(t){for(var i=t.target,e,s,h,c,l;i.tagName!=="A"&&i!==o;)i=i.parentNode;if(i!=o){for(e=n.enc,s=f,h=0;h<i.attributes.length;++h)c=i.attributes[h],l=c.name.match(/^data-(.*)$/),l&&(s+="&"+e(l[1])+"="+e(c.value));s+="&utm="+e(u+r.utm);i.href=s}})}function o(){return[].map.call(n.qsa(".post-taglist .post-tag"),function(n){return n.innerText}).join(";")||null}var t=window,i=document,r=i.getElementsByTagName("head")[0],u="&utm_source="+location.hostname+"&utm_medium=ad&utm_campaign=",n={doc:i,head:r,enc:encodeURIComponent,dec:decodeURIComponent,se:t.StackExchange,ts:function(){return(new Date).getTime()},st:setTimeout,ct:clearTimeout,qsa:function(n){return document.querySelectorAll(n)}};n.ls=function(n,t,u){var f=i.createElement("script"),e=!1;f.async=!0;f.src=n;t&&(f.onload=f.onreadystatechange=function(){e||this.readyState&&this.readyState!=="loaded"&&this.readyState!=="complete"||(e=!0,t(f),f.onload=f.onreadystatechange=null,u&&f.parentNode.removeChild(f))});r.appendChild(f)};n.init=function(i){function s(){i.st.forEach(f);r.forEach(function(n){e(n,i.cr[n],u,o)});typeof t.clc_after_init=="function"&&t.clc_after_init()}var r=Object.keys(i.cr),u="//"+i.h+i.ct+"?an="+i.an,o=n.cps?n.ts()-n.cps:0;s()};n.lo=function(i){var u,f=t.location.hash,s=n.dec,r=n.se,e;i=i||{};switch(f){case"#large":opts.l=1;break;case"#abort":opts.abort=1;break;default:f.length>0&&f.substr(1).split("&").forEach(function(n){var t=n.split("=",2);this[s(t[0])]=s(t[1])},i)}return e=i.ac||i.accountid||r&&r.options&&r.options.user&&r.options.user.accountId,e&&(i.ac=e),i.tags||(u=o(),u&&(i.tags=u)),i};n.o2q=function(t,i){var r=n.enc;return Object.keys(t).filter(function(n){return i.indexOf(n)!==-1}).map(function(n){return r(n)+"="+r(t[n])}).join("&")};n.load=function(i,r,u){n.ls(i+"?"+n.o2q(r,u),function(){typeof t.clc_loaded=="function"&&t.clc_loaded()});n.cps=n.ts()};n.el=function(t){var i=n.qsa(t);return i.length>0?i[0]:null};n.hc=function(n){return n&&n.innerHTML&&n.innerHTML.replace(/\s+/g,"").length>0};n.wfc=function(t,i,r,u){function c(){n.hc(s)?(f(o),f(e),u(!0)):e=h(c,i)}function l(){f(e);u(!1)}var s=n.el(t),h=n.st,f=n.ct,o,e;if(s!==null)return c(),r&&(o=h(l,r)),function(){e&&f(e);o&&f(o)}};t.clc=n})();;(function(n){function c(){var n=t.el(u);t.hc(n)||(n.parentNode.removeChild(n),typeof r=="function"&&r())}function l(r){if(!f){f=!0;var u=t.qsa("#"+i.d);u.length!==0&&(r||(i.azt=!0),i.lw=t.ts()-s,i.l||document.getElementById("careersadsdoublehigh")===null||(i.l=1),t.load(n.adurl,i,["d","l","ip","ac","eng","prov","tags","theme","remote","seed","lw","azt","sysadmin"]))}}var o=window,t=o.clc,s=t.ts(),h=t.st,v=t.ct,u="#sidebar [id^='adzerk'].everyonelovesstackoverflow",i=t.lo({d:"hireme"}),f,r,e,a;i.abort||(e=null,r=t.wfc(u,20,e,l),a=h(c,2e3))}).call(null, {"adurl":"//clc.stackoverflow.com/j/p.js"});            </script>
+        </div>
+			<div class="module" id="chat-feature">
+    
+
+    
+<h4><a title="47 users active in 26 rooms the last 60 minutes" href="http://chat.stackoverflow.com/" id="h-chat-link">47 People Chatting</a></h4>
+
+<div class="related" id="ad502-rooms"><div class="ad502-room"><h3 class="ad502-room-h3"><span class="ad502-room-title" title="Lounge&lt;C++&gt;"><a href="http://chat.stackoverflow.com/rooms/10">Lounge&lt;C++&gt;</a></span></h3><span title="2015-09-11 03:44:20Z" class="ad502-last-message">1 hour ago - <a href="http://chat.stackoverflow.com/users/703016">Anastasiya Asadullayeva</a></span><br><div class="ad502-users"><a href="http://chat.stackoverflow.com/users/703016"><img src="how_to_identify_multiple_usb_serial_adapter_files/F000y.jpg" title="Anastasiya Asadullayeva: 1 hour ago" height="23" width="23"></a><a href="http://chat.stackoverflow.com/users/3886129"><img src="how_to_identify_multiple_usb_serial_adapter_files/x7gOr.jpg" title="Nooble: 1 hour ago" height="23" width="23"></a><a href="http://chat.stackoverflow.com/users/1146881"><img src="how_to_identify_multiple_usb_serial_adapter_files/PqRKW.png" title="ʞɔᴉN: 1 hour ago" height="23" width="23"></a><a href="http://chat.stackoverflow.com/users/4892076"><img src="how_to_identify_multiple_usb_serial_adapter_files/s6vwT.png" title="jaggedSpire: 1 hour ago" height="23" width="23"></a><a href="http://chat.stackoverflow.com/users/5253689"><img src="how_to_identify_multiple_usb_serial_adapter_files/p2LmO.jpg" title="Elim Garak: 1 hour ago" height="23" width="23"></a><a href="http://chat.stackoverflow.com/users/2912448"><img src="how_to_identify_multiple_usb_serial_adapter_files/3b88f08c2dec4d83aad079019730e369.png" title="3v0: 1 hour ago" height="23" width="23"></a><a href="http://chat.stackoverflow.com/users/1004211"><img src="how_to_identify_multiple_usb_serial_adapter_files/490a33dc2429cbd669bd4471d7aedc1d.png" title="Prismatic: 1 hour ago" height="23" width="23"></a></div></div><div class="ad502-room"><h3 class="ad502-room-h3"><span class="ad502-room-title" title="JavaScript"><a href="http://chat.stackoverflow.com/rooms/17">JavaScript</a></span></h3><span title="2015-09-11 03:44:21Z" class="ad502-last-message">1 hour ago - <a href="http://chat.stackoverflow.com/users/1078067">copy</a></span><br><div class="ad502-users"><a href="http://chat.stackoverflow.com/users/1078067"><img src="how_to_identify_multiple_usb_serial_adapter_files/q3TEx.png" title="copy: 1 hour ago" height="23" width="23"></a><a href="http://chat.stackoverflow.com/users/1216976"><img src="how_to_identify_multiple_usb_serial_adapter_files/8f10852a80ca4794f50a304254cb123b.png" title="SomeKittens: 1 hour ago" height="23" width="23"></a><a href="http://chat.stackoverflow.com/users/956900"><img src="how_to_identify_multiple_usb_serial_adapter_files/4416acf0ee6259443ee3cca16d894d14.png" title="Luggage: 2 hours ago" height="23" width="23"></a><a href="http://chat.stackoverflow.com/users/401137"><img src="how_to_identify_multiple_usb_serial_adapter_files/j25bf.png" title="Some Guy: 2 hours ago" height="23" width="23"></a><a href="http://chat.stackoverflow.com/users/345257"><img src="how_to_identify_multiple_usb_serial_adapter_files/KpeP3.jpg" title="Mosho: 2 hours ago" height="23" width="23"></a><a href="http://chat.stackoverflow.com/users/1839506"><img src="how_to_identify_multiple_usb_serial_adapter_files/Sej2t.jpg" title="Caprica Six: 2 hours ago" height="23" width="23"></a><a href="http://chat.stackoverflow.com/users/785745"><img src="how_to_identify_multiple_usb_serial_adapter_files/f9fc3249a341a64ee2721637915cd301.jpeg" title="Kendall Frey: 3 hours ago" height="23" width="23"></a></div></div></div>
+<script>
+// <!--
+    StackExchange.ready(
+    function () {
+        var options = {
+            chatUrl: 'http://chat.stackoverflow.com',
+            reloadUrl: '/api/recent-chat',
+            preloadData: {"activeUsers":47,"activeRooms":26,"rooms":[{"name":"Lounge\u003cC++\u003e","id":10,"lastPost":1441943060,"posts":4008322,"users":[{"name":"Anastasiya Asadullayeva","id":703016,"emailhash":"!https://i.stack.imgur.com/F000y.jpg?s=128\u0026g=1","lastPost":1441943060},{"name":"Nooble","id":3886129,"emailhash":"!https://i.stack.imgur.com/x7gOr.jpg?s=128\u0026g=1","lastPost":1441943060},{"name":"ʞɔᴉN","id":1146881,"emailhash":"!https://i.stack.imgur.com/PqRKW.png?s=128\u0026g=1","lastPost":1441943002},{"name":"jaggedSpire","id":4892076,"emailhash":"!https://i.stack.imgur.com/s6vwT.png?s=128\u0026g=1","lastPost":1441942999},{"name":"Elim Garak","id":5253689,"emailhash":"!https://i.stack.imgur.com/p2LmO.jpg?s=128\u0026g=1","lastPost":1441942970},{"name":"3v0","id":2912448,"emailhash":"3b88f08c2dec4d83aad079019730e369","lastPost":1441942293},{"name":"Prismatic","id":1004211,"emailhash":"490a33dc2429cbd669bd4471d7aedc1d","lastPost":1441942114}],"messages":[{"date":1441943060,"user":"Anastasiya Asadullayeva","userid":703016}],"singleImage":false,"tags":["c++","c++11","c++14","c++-faq"]},{"name":"JavaScript","id":17,"lastPost":1441943061,"posts":2860805,"users":[{"name":"copy","id":1078067,"emailhash":"!https://i.stack.imgur.com/q3TEx.png?s=128\u0026g=1","lastPost":1441943061},{"name":"SomeKittens","id":1216976,"emailhash":"8f10852a80ca4794f50a304254cb123b","lastPost":1441941948},{"name":"Luggage","id":956900,"emailhash":"4416acf0ee6259443ee3cca16d894d14","lastPost":1441939180},{"name":"Some Guy","id":401137,"emailhash":"!https://i.stack.imgur.com/j25bf.png?s=128\u0026g=1","lastPost":1441938948},{"name":"Mosho","id":345257,"emailhash":"!https://i.stack.imgur.com/KpeP3.jpg?s=128\u0026g=1","lastPost":1441938760},{"name":"Caprica Six","id":1839506,"emailhash":"!https://i.stack.imgur.com/Sej2t.jpg?s=128\u0026g=1","lastPost":1441938116},{"name":"Kendall Frey","id":785745,"emailhash":"f9fc3249a341a64ee2721637915cd301","lastPost":1441934555}],"messages":[{"date":1441943061,"user":"copy","userid":1078067}],"singleImage":false,"tags":["ecmascript","es6","iojs","jabbascript","javascript","nodejs","promises"]}]} 
+        };
+
+        StackExchange.chatAd.init(options);
+    });
+// -->
+</script>
+
+</div>  
+    
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+<div class="spacer">
+	<a href="http://stackoverflow.com/q/5421008?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">2</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/5421008/how-to-uniquely-identify-two-identical-usb-serial-adapters-in-linux?lq=1" class="question-hyperlink">How to uniquely identify two identical USB-serial adapters in Linux</a>
+</div><div class="spacer">
+	<a href="http://stackoverflow.com/q/29573137?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">1</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/29573137/udev-rule-works-in-udevadm-test-but-not-udevadm-trigger?lq=1" class="question-hyperlink">udev rule works in `udevadm test`, but not `udevadm trigger`</a>
+</div>			</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/5421008?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">2
+    </div>
+</a><a href="http://stackoverflow.com/questions/5421008/how-to-uniquely-identify-two-identical-usb-serial-adapters-in-linux?rq=1" class="question-hyperlink">How to uniquely identify two identical USB-serial adapters in Linux</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/6772179?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">5
+    </div>
+</a><a href="http://stackoverflow.com/questions/6772179/how-to-control-a-serial-device-on-android?rq=1" class="question-hyperlink">How to control a serial device on Android?</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/9181856?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">1
+    </div>
+</a><a href="http://stackoverflow.com/questions/9181856/why-isnt-my-usb-to-serial-adapter-working?rq=1" class="question-hyperlink">Why isn't my USB-To-Serial Adapter Working?</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/11396757?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="http://stackoverflow.com/questions/11396757/usb-to-serial-emulation?rq=1" class="question-hyperlink">USB to Serial emulation</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/12159503?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">2
+    </div>
+</a><a href="http://stackoverflow.com/questions/12159503/using-usb-to-serial-in-ubuntu-12-04-dev-ttyusb0-missing?rq=1" class="question-hyperlink">Using USB to Serial in Ubuntu 12.04 - /dev/ttyUSB0 missing</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/13449912?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">5
+    </div>
+</a><a href="http://stackoverflow.com/questions/13449912/cannot-set-baud-rate-on-usb-serial-port-for-ubuntu-12-04?rq=1" class="question-hyperlink">Cannot set baud rate on USB serial port for Ubuntu 12.04</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/15856751?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="http://stackoverflow.com/questions/15856751/usb-to-serial-adapter-for-full-duplex-communication?rq=1" class="question-hyperlink">USB to serial adapter for full duplex communication</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/22759063?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">1
+    </div>
+</a><a href="http://stackoverflow.com/questions/22759063/persistence-between-usb-to-serial-devices-with-the-same-serial-number?rq=1" class="question-hyperlink">Persistence between USB to Serial devices with the same serial number</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/22819985?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="http://stackoverflow.com/questions/22819985/ttyusb-udev-naming-by-hardware-port?rq=1" class="question-hyperlink">ttyusb udev naming by hardware port</a>
+</div>
+
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="http://stackexchange.com/questions?tab=hot" class="js-gps-track" data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li>
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="http://physics.stackexchange.com/questions/206048/why-are-there-no-stars-visible-in-this-photograph" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why are there no stars visible in this photograph?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="http://rpg.stackexchange.com/questions/68378/is-the-cancer-mage-overpowered" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is the Cancer Mage overpowered?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="http://rpg.stackexchange.com/questions/68400/what-is-the-difference-if-any-between-permanent-and-until-dispelled" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What Is The Difference, If Any, Between "Permanent", and "Until Dispelled"?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/273362/english-translation-for-kock%c3%a1sf%c3%bcl%c5%b1-ny%c3%bal-hungarian" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    English translation for Kockásfülű Nyúl (Hungarian)
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-movies" title="Movies &amp; TV Stack Exchange"></div><a href="http://movies.stackexchange.com/questions/40952/where-are-the-simpsons-from" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:367 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Where are the Simpsons from?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-cooking" title="Seasoned Advice"></div><a href="http://cooking.stackexchange.com/questions/61648/eggs-sticking-to-the-pan" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:49 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Eggs sticking to the pan
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="http://rpg.stackexchange.com/questions/68368/how-to-justify-my-thematic-spell-selections-to-other-players-saying-theyre-unde" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to justify my thematic spell selections to other players saying they're underpowered?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/57327/lets-make-a-word-search" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Let's make a word-search!
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/32504524/is-value-of-xfx-unspecified-if-f-modifies-x" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is value of x*f(x) unspecified if f modifies x?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-gaming" title="Arqade"></div><a href="http://gaming.stackexchange.com/questions/235995/how-do-i-identify-a-item-in-diablo-3-on-console" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:41 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How do I identify a item in Diablo 3 on console?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/32510183/can-the-use-of-c11-auto-improve-performance" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can the use of C++11 auto improve performance?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-gis" title="Geographic Information Systems Stack Exchange"></div><a href="http://gis.stackexchange.com/questions/162501/objects-in-this-class-cannot-be-updated-outside-an-edit-session-inside-arcfm" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:79 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Objects in this class cannot be updated outside an edit session inside ArcFM?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="http://rpg.stackexchange.com/questions/68396/can-a-cube-of-force-block-breath-attacks" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can a Cube of Force block breath attacks?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="http://unix.stackexchange.com/questions/227951/what-is-the-fastest-way-to-send-massive-amounts-of-data-between-two-computers" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is the fastest way to send massive amounts of data between two computers?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-puzzling" title="Puzzling Stack Exchange"></div><a href="http://puzzling.stackexchange.com/questions/22064/the-5040-square" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:559 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    The 5040 Square
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-travel" title="Travel Stack Exchange"></div><a href="http://travel.stackexchange.com/questions/55584/when-boarding-a-full-plane-how-can-i-guarantee-that-i-can-keep-my-handheld-bagg" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:273 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    When boarding a full plane, how can I guarantee that I can keep my handheld baggage with me?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-portuguese" title="Portuguese Language Stack Exchange"></div><a href="http://portuguese.stackexchange.com/questions/1105/is-it-mandatory-to-use-the-definite-article-before-a-given-name" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:625 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is it mandatory to use the definite article before a given name?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-workplace" title="The Workplace Stack Exchange"></div><a href="http://workplace.stackexchange.com/questions/54138/how-to-tell-a-client-a-reported-bug-is-not-actually-a-bug-but-something-they" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:423 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to tell a client a reported "bug" is not actually a bug, but something they need to fix themselves?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-chess" title="Chess Stack Exchange"></div><a href="http://chess.stackexchange.com/questions/12259/end-game-queen-rook-vs-queen" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:435 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    End Game - Queen + Rook vs Queen
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/25460/what-if-parents-didnt-own-their-children" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What if parents didn't "own" their children?
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-salesforce" title="Salesforce Stack Exchange"></div><a href="http://salesforce.stackexchange.com/questions/92184/return-different-data-type-using-only-one-method" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:459 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Return different data type using only one method
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/32499375/operator-behaves-like-operator" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    &amp;&amp; operator behaves like || operator
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="http://unix.stackexchange.com/questions/228812/looking-for-posix-utility-to-test-whether-filename-is-a-symlink" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Looking for POSIX utility to test whether filename is a symlink
+                </a>
+
+            </li>
+            <li style="display: list-item;" class="dno js-hidden">
+                <div class="favicon favicon-salesforce" title="Salesforce Stack Exchange"></div><a href="http://salesforce.stackexchange.com/questions/92170/how-to-export-object-with-their-field-level-securities-and-or-how-to-set-all-fie" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:459 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to export object with their field-level 
+securities and/or how to set all fields securities levels at once?
+                </a>
+
+            </li>
+    </ul>
+
+        
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="http://stackoverflow.com/feeds/question/4800099" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/4800099/ivc/fa71');});
+</script>
+<noscript>
+    <div><img src="/posts/4800099/ivc/fa71" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang"></div></div>
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="http://stackoverflow.com/tour">tour</a>
+                    <a href="http://stackoverflow.com/help">help</a>
+                    <a href="http://blog.stackoverflow.com/?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com/">chat</a>
+                    <a href="http://data.stackexchange.com/">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick='StackExchange.switchMobile("on")'>mobile</a>
+                    <b><a href="http://stackoverflow.com/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com/">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tbody><tr>
+            <th colspan="3">
+                Technology
+            </th>
+            <th>
+                Life / Arts
+            </th>
+            <th>
+                Culture / Recreation
+            </th>
+            <th>
+                Science
+            </th>
+            <th>
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="http://stackoverflow.com/" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="http://serverfault.com/" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="http://superuser.com/" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="http://webapps.stackexchange.com/" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="http://askubuntu.com/" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="http://webmasters.stackexchange.com/" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="http://gamedev.stackexchange.com/" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="http://tex.stackexchange.com/" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://programmers.stackexchange.com/" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="http://unix.stackexchange.com/" title="users of Linux, FreeBSD and other Un*x-like operating systems">Unix &amp; Linux</a></li>
+                        <li><a href="http://apple.stackexchange.com/" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="http://wordpress.stackexchange.com/" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="http://gis.stackexchange.com/" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="http://electronics.stackexchange.com/" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="http://android.stackexchange.com/" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="http://security.stackexchange.com/" title="information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://dba.stackexchange.com/" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="http://drupal.stackexchange.com/" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="http://sharepoint.stackexchange.com/" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="http://ux.stackexchange.com/" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="http://mathematica.stackexchange.com/" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="http://salesforce.stackexchange.com/" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                        <li><a href="http://expressionengine.stackexchange.com/" title="administrators, end users, developers and designers for ExpressionEngine® CMS">ExpressionEngine® Answers</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (13)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://photo.stackexchange.com/" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="http://scifi.stackexchange.com/" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="http://graphicdesign.stackexchange.com/" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="http://movies.stackexchange.com/" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                        <li><a href="http://cooking.stackexchange.com/" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="http://diy.stackexchange.com/" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="http://money.stackexchange.com/" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="http://academia.stackexchange.com/" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (9)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://english.stackexchange.com/" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="http://skeptics.stackexchange.com/" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="http://judaism.stackexchange.com/" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="http://travel.stackexchange.com/" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="http://christianity.stackexchange.com/" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="http://gaming.stackexchange.com/" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="http://bicycles.stackexchange.com/" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="http://rpg.stackexchange.com/" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://math.stackexchange.com/" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="http://stats.stackexchange.com/" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="http://cstheory.stackexchange.com/" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="http://physics.stackexchange.com/" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="http://mathoverflow.net/" title="professional mathematicians">MathOverflow</a></li>
+                        <li><a href="http://chemistry.stackexchange.com/" title="scientists, academics, teachers and students">Chemistry</a></li>
+                        <li><a href="http://biology.stackexchange.com/" title="biology researchers, academics, and students">Biology</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (5)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://stackapps.com/" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="http://meta.stackexchange.com/" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="http://area51.stackexchange.com/" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="http://careers.stackoverflow.com/">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</tbody></table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo © 2015 Stack Exchange Inc; user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2015.9.10.2807
+            </div>
+            
+        </div>
+    </div>
+    <noscript>
+        <div id="noscript-warning">Stack Overflow works best with JavaScript enabled<img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    ados.run.push(function () { ados_setKeywords('linux,ubuntu,usb,usbserial,identification');; ados_load(); });         
+</script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-5620270-1');
+                        ga('set', 'dimension2', '|linux|ubuntu|usb|usbserial|identification|');         ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+            qc.async=true;
+            qc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+            s.parentNode.insertBefore(qc, s);
+            var sc=document.createElement('script');
+            sc.async=true;
+            sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+            s.parentNode.insertBefore(sc, s);
+        })();
+        _comscore.push({ c1: "2", c2: "17440561" });
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>
+            
+    
+</body></html>
