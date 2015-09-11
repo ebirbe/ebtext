@@ -1,0 +1,1 @@
+/**/__twttr.receiveCount({"count":1,"url":"http:\/\/antonraharja.com\/2015\/05\/14\/persistent-paths-for-dynamic-device-file\/"});
