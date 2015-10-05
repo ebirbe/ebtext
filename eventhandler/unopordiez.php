@@ -14,17 +14,28 @@ class EBTMsgReceived extends EBTMessage
 	{
 		// Read the message
 		$sClientNumber = $this->get_header('From');
+		$sDateSent = $this->get_header('Sent');
 		$sMsgIn = trim($this->get_message());
 		$sMsgOut = "";
 
-		$aCedulas = split(',', $sMsgIn);
+		$aCedulas = split(' ', $sMsgIn);
 		foreach ($aCedulas as $sCedula)
 		{
 			// Sanitize
+			$sCedula = str_replace(',', '', $sCedula);
 			$sCedula = str_replace('.', '', $sCedula);
 			$sCedula =  trim($sCedula);
 
-			if (!is_numeric($sCedula) or strlen($sCedula) < 7)
+			echo "Cedula: " . $sCedula . "\n";
+
+			// Si el mensaje esta en blanco es solo texto no hace nada
+			if (empty($sCedula) or !is_numeric($sCedula))
+			{
+				continue;
+			}
+
+			// Si la cedula esta fuera de rango
+			if(strlen($sCedula) < 6 or strlen($sCedula) > 8)
 			{
 				$sMsgOut = $sCedula . " No parece ser un numero de cedula.";
 			}
@@ -32,6 +43,7 @@ class EBTMsgReceived extends EBTMessage
 			{
 				$param = array(
 					"cedula" => $sCedula,
+					"enviado" => $sDateSent,
 					"telf_auto" => $sClientNumber,
 				);
 
@@ -48,16 +60,19 @@ class EBTMsgReceived extends EBTMessage
 
 				$result = curl_exec($ch);
 				$jData = json_decode($result);
+				
+				var_dump($jData);
 
 				if ($jData !== NULL)
 				{
 					if ($jData->existe)
 					{
-						$sMsgOut = "Se ha registrado " . $jData->cedula . " con exito.";
+						// $sMsgOut = "Se ha registrado " . $jData->cedula . " con exito.";
+						continue;
 					}
 					else
 					{
-						$sMsgOut = "La cedula " . $jData->cedula . " no existe.";
+						$sMsgOut = "La cedula " . $jData->cedula . " no está registrada.";
 					}
 				}
 				else
