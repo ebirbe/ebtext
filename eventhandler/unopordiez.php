@@ -3,7 +3,8 @@ require_once('ebtmessage.php');
 
 class EBTMsgReceived extends EBTMessage
 {
-	public $validation_server = 'http://nuestravictoria.org.ve/sms/validar.php';
+	//public $validation_server = 'http://nuestravictoria.org.ve/sms/validar.php';
+	public $validation_server = 'http://localhost/~erick/militantes/sms/validar.php';
 
 	function __construct($filename)
 	{
@@ -50,9 +51,12 @@ class EBTMsgReceived extends EBTMessage
 				$data_string = json_encode($param);
 				$ch = curl_init($this->validation_server);
 				curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-				curl_setopt($ch, CURLOPT_PROXY, "172.16.2.8");
+				/*
+				// PROXY
+				curl_setopt($ch, CURLOPT_PROXY, "10.34.1.11");
 				curl_setopt($ch, CURLOPT_PROXYPORT, "3128");
 				curl_setopt($ch, CURLOPT_PROXYTYPE, "HTTP");
+				*/
 				curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 				curl_setopt($ch, CURLOPT_HTTPHEADER, array(
@@ -63,7 +67,7 @@ class EBTMsgReceived extends EBTMessage
 
 				$result = curl_exec($ch);
 				$jData = json_decode($result);
-				
+				var_dump($result);
 				var_dump($jData);
 
 				if ($jData !== NULL)
@@ -75,7 +79,7 @@ class EBTMsgReceived extends EBTMessage
 					}
 					else
 					{
-						// $sMsgOut = "La cedula " . $jData->cedula . " no está registrada.";
+						$sMsgOut = "La cedula " . $jData->cedula . " no está registrada.";
 						continue;
 					}
 				}
