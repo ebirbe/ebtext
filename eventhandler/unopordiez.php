@@ -17,6 +17,7 @@ class EBTMsgReceived extends EBTMessage
 		$sClientNumber = $this->get_header('From');
 		$sDateSent = $this->get_header('Sent');
 		$sMsgIn = trim($this->get_message());
+		$sMsgIn = str_replace(',', ' ', $sMsgIn);
 		$sMsgOut = "";
 
 		$aCedulas = split(' ', $sMsgIn);
