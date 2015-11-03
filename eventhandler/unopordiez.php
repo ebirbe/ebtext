@@ -85,7 +85,7 @@ class EBTMsgReceived extends EBTMessage
 				}
 				else
 				{
-					$sMsgOut = "Ocurrio un error con " . $sCedula;
+					$sMsgOut = "Ocurrio un error con " . $sCedula . " - (" . $result . ")";
 				}
 			}
 
