@@ -18,6 +18,9 @@ class EBTMsgReceived extends EBTMessage
 		$sDateSent = $this->get_header('Sent');
 		$sMsgIn = trim($this->get_message());
 		$sMsgIn = str_replace(',', ' ', $sMsgIn);
+		$sMsgIn = str_replace("\n", ' ', $sMsgIn);
+		$sMsgIn = str_replace("-", ' ', $sMsgIn);
+		$sMsgIn = str_replace("/", ' ', $sMsgIn);
 		$sMsgOut = "";
 
 		$aCedulas = split(' ', $sMsgIn);
@@ -26,6 +29,7 @@ class EBTMsgReceived extends EBTMessage
 			// Sanitize
 			$sCedula = str_replace(',', '', $sCedula);
 			$sCedula = str_replace('.', '', $sCedula);
+
 			$sCedula =  trim($sCedula);
 
 			echo "Cedula: " . $sCedula . "\n";
@@ -67,7 +71,7 @@ class EBTMsgReceived extends EBTMessage
 				$result = curl_exec($ch);
 				$jData = json_decode($result);
 				var_dump($result);
-				var_dump($jData);
+				//var_dump($jData);
 
 				if ($jData !== NULL)
 				{
