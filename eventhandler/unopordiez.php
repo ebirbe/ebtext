@@ -3,8 +3,8 @@ require_once('ebtmessage.php');
 
 class EBTMsgReceived extends EBTMessage
 {
-	//public $validation_server = 'http://nuestravictoria.org.ve/sms/validar.php';
-	public $validation_server = 'http://localhost/~erick/militantes/sms/validar.php';
+	public $validation_server = 'http://nuestravictoria.org.ve/sms/validar.php';
+	//public $validation_server = 'http://localhost/~erick/militantes/sms/validar.php';
 
 	function __construct($filename)
 	{
@@ -77,11 +77,9 @@ class EBTMsgReceived extends EBTMessage
 					)
 				);
 				// PROXY
-				/*
 				curl_setopt($ch, CURLOPT_PROXY, "172.16.2.8");
 				curl_setopt($ch, CURLOPT_PROXYPORT, "3128");
 				curl_setopt($ch, CURLOPT_PROXYTYPE, "HTTP");
-				*/
 
 				$result = curl_exec($ch);
 				$jData = json_decode($result);
