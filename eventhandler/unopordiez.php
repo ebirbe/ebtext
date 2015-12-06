@@ -83,7 +83,7 @@ class EBTMsgReceived extends EBTMessage
 
 				$result = curl_exec($ch);
 				$jData = json_decode($result);
-				var_dump($result);
+				var_dump('PARA: ' . $sClientNumber .' '.$result);
 				// var_dump($jData);
 
 				if ($jData !== NULL)
