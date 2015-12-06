@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sudo tailf -n 1000 /var/log/smstools/smsd.log
