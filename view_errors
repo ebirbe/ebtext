@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sudo ebtext/view_log -n 100 | grep C$1\.*{\.*_

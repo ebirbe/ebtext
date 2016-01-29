@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sudo tailf -n 100 /var/log/smstools/smsd.log | egrep C$1\.*! | grep -v string
